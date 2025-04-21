@@ -28,6 +28,7 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = Attributes)
+	AActor* weaponActor;
 	UGunBase* weapon;
 	
 };

@@ -19,6 +19,11 @@ void UCharacterController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (weaponActor)
+	{
+		weapon = weaponActor->FindComponentByClass<UGunBase>();
+	}
+
 	// ...
 	
 }

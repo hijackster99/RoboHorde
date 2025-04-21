@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "CharacterController.h"
+#include "Enemy.h"
 
 // Sets default values for this component's properties
-UCharacterController::UCharacterController()
+UEnemy::UEnemy()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -15,30 +15,32 @@ UCharacterController::UCharacterController()
 
 
 // Called when the game starts
-void UCharacterController::BeginPlay()
+void UEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (weaponActor)
-	{
-		weapon = weaponActor->FindComponentByClass<UGunBase>();
-	}
-
 	// ...
+	HP = MaxHP;
 	
 }
 
 
 // Called every frame
-void UCharacterController::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UEnemy::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
 }
 
-void UCharacterController::Shoot()
+void UEnemy::Hurt(int amount)
 {
+	HP -= amount;
+	if (HP <= 0) Kill();
+}
 
+void UEnemy::Kill()
+{
+	this->GetOwner()->Destroy();
 }
 

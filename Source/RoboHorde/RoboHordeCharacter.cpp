@@ -60,6 +60,8 @@ void ARoboHordeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARoboHordeCharacter::Look);
+
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &ARoboHordeCharacter::Shoot);
 	}
 	else
 	{
@@ -92,4 +94,10 @@ void ARoboHordeCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ARoboHordeCharacter::Shoot(const FInputActionValue& Value)
+{
+	FHitResult result
+	LineTraceComponent(result, )
 }

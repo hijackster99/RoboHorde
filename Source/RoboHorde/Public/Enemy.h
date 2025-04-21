@@ -2,21 +2,22 @@
 
 #pragma once
 
-#include "GunBase.h"
-
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "CharacterController.generated.h"
+#include "Enemy.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class ROBOHORDE_API UCharacterController : public UActorComponent
+class ROBOHORDE_API UEnemy : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UCharacterController();
+	UEnemy();
+
+	void Hurt(int amount);
+	void Kill();
 
 protected:
 	// Called when the game starts
@@ -26,11 +27,9 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	void Shoot();
-
 private:
 	UPROPERTY(EditAnywhere, Category = Attributes)
-	AActor* weaponActor;
-	UGunBase* weapon;
-	
+	int MaxHP;
+	int HP;
+
 };

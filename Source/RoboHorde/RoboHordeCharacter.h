@@ -36,6 +36,9 @@ class ARoboHordeCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* ShootAction;
 	
 public:
 	ARoboHordeCharacter();
@@ -55,6 +58,8 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	void Shoot(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
